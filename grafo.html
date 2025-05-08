@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Autómata de Email</title>
+  <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+  <style>
+    #network {
+      width: 900px;
+      height: 500px;
+      border: 1px solid #444;
+      margin: 20px auto;
+    }
+  </style>
+</head>
+<body>
+  <div id="network"></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Crear nodos
+      const nodes = new vis.DataSet([
+        { id: 'q0', label: 'q0', shape: 'circle', color: '#FFA07A' },
+        { id: 'q1', label: 'q1', shape: 'circle' },
+        { id: 'q2', label: 'q2', shape: 'circle' },
+        { id: 'q3', label: 'q3', shape: 'circle' },
+        { id: 'q4', label: 'q4', shape: 'circle' },
+        { id: 'q5', label: 'q5', shape: 'circle' },
+        { id: 'q6', label: 'q6', shape: 'circle' },
+        { id: 'q7', label: 'q7', shape: 'doubleCircle', color: '#90EE90' }
+      ]);
+
+      // Crear aristas
+      const edges = new vis.DataSet([
+        { from: 'q0', to: 'q1', arrows: 'to', label: 'letra/número' },
+        { from: 'q1', to: 'q1', arrows: 'to', label: 'letra/número' },
+        { from: 'q1', to: 'q2', arrows: 'to', label: '@' },
+        { from: 'q2', to: 'q3', arrows: 'to', label: 'letra' },
+        { from: 'q3', to: 'q3', arrows: 'to', label: 'letra' },
+        { from: 'q3', to: 'q4', arrows: 'to', label: '.' },
+        { from: 'q4', to: 'q5', arrows: 'to', label: 'c' },
+        { from: 'q5', to: 'q6', arrows: 'to', label: 'o' },
+        { from: 'q6', to: 'q7', arrows: 'to', label: 'm' }
+      ]);
+
+      // Configuración
+      const container = document.getElementById('network');
+      const data = { nodes: nodes, edges: edges };
+      const options = {
+        layout: {
+          hierarchical: {
+            direction: 'LR',  // De izquierda a derecha
+            nodeSpacing: 150,
+            levelSeparation: 100
+          }
+        },
+        edges: {
+          smooth: true,
+          font: { size: 14 }
+        },
+        nodes: {
+          font: { size: 16 },
+          margin: 10
+        },
+        physics: false
+      };
+
+      new vis.Network(container, data, options);
+    });
+  </script>
+</body>
+</html>

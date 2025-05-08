@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validador de Email</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Validador de Email</h1>
+        <p class="description">Ingresa un email para validar si cumple con el patrón: [letras/números]+@[letras]+.com
+        </p>
+
+        <form id="emailForm">
+            <div class="input-group">
+                <input type="text" id="emailInput" placeholder="ejemplo: juan123@gmail.com" required>
+                <button type="submit">Validar</button>
+            </div>
+        </form>
+
+        <div id="result" class="hidden">
+            <div id="statusIcon"></div>
+            <p id="resultText"></p>
+        </div>
+
+        <div class="examples">
+            <h3>Ejemplos válidos:</h3>
+            <ul>
+                <li>usuario123@gmail.com</li>
+                <li>ana@yahoo.com</li>
+                <li>a@b.com</li>
+            </ul>
+
+            <h3>Ejemplos inválidos:</h3>
+            <ul>
+                <li>usuario@gmail (falta .com)</li>
+                <li>@gmail.com (falta nombre)</li>
+                <li>usuario@gmail.xyz (no termina en .com)</li>
+            </ul>
+
+            <a href="./grafo.html">Ver grafo de validación</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
